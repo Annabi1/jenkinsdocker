@@ -46,6 +46,14 @@ pipeline{
                 }
             }
         }
+         stage('Build Maven') {
+            steps{
+
+                sh "docker pull ba2aec10e58f/my-app-1.0:latest"
+                
+            }
+        }
+        
     }
 }
 
