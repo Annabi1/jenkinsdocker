@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+   
+    stages {
+        stage('GIT') {
+            steps{
+
+git branch: 'main', url: 'https://github.com/Annabi1/jenkinsdocker.git'                
+            }
+        }
+        
+        stage('Build Maven') {
+            steps{
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                  sh 'docker build -t ba2aec10e58f/my-app-1.0 .'
+                }
+            }
+        }
+        stage('Deploy Docker Image') {
+            steps {
+                script {
+                 withCredentials([string(credentialsId: 'ba2aec10e58f', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u ba2aec10e58f -p ${dockerhubpwd}'
+                 }  
+                 sh 'docker push ba2aec10e58f/my-app-1.0'
+                }
+            }
+        }
+    }
+}
+
