@@ -29,6 +29,13 @@ pipeline{
                 }
             }
         }
+           stage('Run Docker Image') {
+            steps {
+                script {
+                  sh 'docker run ba2aec10e58f/my-app-1.0 '
+                }
+            }
+        }
         stage('Deploy Docker Image') {
             steps {
                 script {
