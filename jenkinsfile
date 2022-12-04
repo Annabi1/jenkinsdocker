@@ -2,10 +2,11 @@ pipeline{
     agent any
    
     stages {
-        stage('GIT') {
-            steps{
+        stages {
+           stage('Notification') {
+            steps {
+                        mail bcc: 'hehe', body: 'Validatio <project started a build you may check it ', cc: 'hehe', from: '', replyTo: '', subject: 'build is triggred', to: 'annabi.mabrouka99@gmail.com'
 
-git branch: 'main', url: 'https://github.com/Annabi1/jenkinsdocker.git'                
             }
         }
         
