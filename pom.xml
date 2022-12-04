@@ -76,7 +76,7 @@
                                 <!-- Configures the content of the created manifest -->
                                 <manifest>
                                     <!-- Adds the classpath to the created manifest -->
-                                    <addClasspath>true</addClasspath>
+                      <mainClass>com.mycompany.app.App</mainClass>
                                     <!-- Specifies that all dependencies of our application are found -->
                                     <!-- Configures the main class of the application -->
                                 </manifest>
